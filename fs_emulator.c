@@ -97,7 +97,7 @@ void createDirectory(const char *name) {
 
 	for(int i = 0; i < inodeCount; i++){
                 Inode inode = inodeList[i];
-                if(inode.type == 'd' && strcmp(inode.name, name) == 0){
+                if((inode.type == 'd' || inode.type == 'f') && strcmp(inode.name, name) == 0){
                         printf("File with that name already exists\n");
                         exit(1);
                 }
@@ -139,7 +139,7 @@ void createFile(const char *name) {
 
 	for(int i = 0; i < inodeCount; i++){
 		Inode inode = inodeList[i];
-		if(inode.type == 'f' && strcmp(inode.name, name) == 0){
+		if((inode.type == 'd' || inode.type == 'f') && strcmp(inode.name, name) == 0){
 			printf("File with that name already exists\n");
 			exit(1);
 		}
